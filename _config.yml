@@ -1,0 +1,13 @@
+title: Yoshwa's Portfolio
+description: My portfolio site built with Jekyll and GitHub Pages.
+theme: jekyll-theme-primer
+markdown: kramdown
+baseurl: "" # Set this if you are using a subfolder; leave it empty for the root.
+url: "https://yoshwa.io" # Replace this with your actual domain or GitHub Pages URL.
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock
+  - .git
+  - .github

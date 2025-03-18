@@ -1,0 +1,168 @@
+:root {
+  --background-color: #000000;
+  --text-color: #28fe14;
+  --screaming-color: #FF7759;
+}
+
+/* Elements */
+
+* {
+  margin: 0;
+}
+
+body {
+  font-family: 'Source Code Pro', monospace; /* The font I would've used is called "SF Mono" */
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 150%; /* For dyslexic people */
+} 
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+th, td {
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 150%; /* For dyslexic people */
+  text-align: center;
+}
+
+li {
+  max-width: 68ch; /* For dyslexic people */
+}
+
+/* IDs */
+
+#welcome-content-wrapper {
+  background-color: var(--background-color);
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  line-height: 150%; /* For dyslexic people */
+  font-size: 32px;
+  display: flex;
+  z-index: 1;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+#block-cursor {
+  color: var(--text-color);
+  border: 1px var(--text-color) solid;
+  background-color: var(--text-color);
+}
+
+#command-output-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
+#command-output {
+  display: flex;
+  flex-direction: column;
+  max-width: 68ch; /* For dyslexic people */
+  gap: 16px;
+}
+
+/* Classes */
+
+.blinking {
+  animation: blink 1s steps(1) infinite;
+}
+
+.short-description {
+  text-align: center;
+}
+
+.long-description {
+  margin-top: 50%;
+  text-align: left;
+}
+#yapping{
+  text-align: center;
+}
+.project-name-wrapper {
+  text-align: center;
+}
+
+.project-name:hover {
+  text-decoration: underline;
+}
+
+.pulse-opacity {
+  animation: pulseOpacity 1s infinite;
+}
+
+.pulse-opacity:hover {
+  animation: none;
+}
+
+.selectable {
+  display: block;
+  text-decoration: none !important;
+}
+
+.selectable:hover {
+  background-color: var(--text-color);
+  color: var(--background-color);
+}
+
+.selectable:hover > #block-cursor {
+  background-color: var(--background-color);
+  border-color: var(--background-color);
+  color: var(--background-color);
+}
+
+.text-highlight {
+  color: var(--screaming-color);
+  font-weight: bold;
+}
+
+.fade-out {
+  animation: fadeOut 1s ease-out;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+}
+
+/* Keyframes */
+
+@keyframes pulseOpacity {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    display: none;
+  }
+}

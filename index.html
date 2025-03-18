@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Yoshwa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="icon" href="icons/dracula.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body style="visibility: hidden;">
+    <p>user@yoshwa ~ % <span class="command">cat ./</span></p>
+
+    <div id="files-wrapper">
+      <a href="yoshwa.pdf" class="selectable" download="yoshwafinal.pdf">download-my-resume</a>
+      <a href="html/contact.html" class="selectable">contact-info.csv</a>
+      <a href="html/skills.html" class="selectable">skills</a>
+      <a href="html/about.html" class="selectable">about-me-draft</a>
+      <a href="html/projects.html" class="selectable">my-projects</a>
+
+
+    </div>
+    <script type="module">
+      import { typewriteTextInElement } from './js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+
+      body.style.visibility = 'visible';
+
+      const isShowingWelcomeContent = sessionStorage.getItem("isNotShowingWelcomeContent") == null;
+
+      if (isShowingWelcomeContent) {
+        const welcomeContentWrapper = document.createElement('div');
+        const welcomeContentWrapperText = ">ssh -p 2222 user@yoshwa";
+        
+        welcomeContentWrapper.id = 'welcome-content-wrapper';
+        welcomeContentWrapper.textContent = ">";
+
+        body.appendChild(welcomeContentWrapper);
+
+        typewriteTextInElement(
+          welcomeContentWrapperText,
+          welcomeContentWrapper,
+          () => {
+            setTimeout(() => {
+              welcomeContentWrapper.className = "fade-out";
+              sessionStorage.setItem('isNotShowingWelcomeContent', true);
+              
+              handleMainContentDisplay();
+            }, 1000);
+          },
+          1,
+          1000
+        );
+      } else {
+        handleMainContentDisplay();
+      }
+
+      function handleMainContentDisplay() {
+        const commandSpan = document.getElementsByClassName('command')[0];
+        const commandSpanText = commandSpan.textContent;
+
+        commandSpan.textContent = '';
+
+        const commandWrapper = commandSpan.parentElement;
+        const blockCursor = document.createElement('span');
+
+        blockCursor.id = "block-cursor";
+        blockCursor.textContent = "_";
+        commandWrapper.appendChild(blockCursor);
+
+        const filesWrapper = document.getElementById('files-wrapper');
+
+        filesWrapper.style.display = 'none';
+
+        typewriteTextInElement(
+          commandSpanText, 
+          commandSpan, 
+          () => { 
+            setTimeout(() => {
+              filesWrapper.style.display = 'block';
+              blockCursor.className = "blinking"
+            }, 125);
+          }
+        );
+      }
+    </script>
+  </body>
+</html>

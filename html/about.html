@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>About | Yoshwa R</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--  This icon was created by Dhanish -->
+    <!--  Here's his X profile: https://x.com/dhanishgajjar -->
+    <link rel="icon" href="../icons/dracula.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <body style="visibility: hidden;">
+    <p>user@yoshwa ~ % clear</p>
+    <p>user@yoshwa <span class="command">cat ./about-me-draft | grep -n "no bullshit" </span></p>
+    <div id="command-output-wrapper">
+      <div id="command-output">
+        <p>
+          Hi, I’m a student and future software engineer (hopefully). I write Java, I also know Spring Boot, databases, and a little frontend—just enough to make things look okay (but not too pretty).
+          
+        </p>
+      </div>
+    </div>
+    <a href="../index.html" class="selectable">user@yoshwa% <span class="command">clear</span></a>
+    <script type="module">
+      import { typewriteTextInElement } from '../js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+
+      body.style.visibility = 'visible';
+
+      const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
+      const commandSpan1Text = commandSpan1.textContent;
+      const commandSpan2Text = commandSpan2.textContent;
+
+      commandSpan1.textContent = commandSpan1Text.substring(0, 6);
+      commandSpan2.textContent = '';
+
+      const blockCursor = document.createElement('span');
+
+      blockCursor.id = "block-cursor";
+      blockCursor.textContent = '_';
+      commandSpan1.parentElement.appendChild(blockCursor);
+
+      const commandOutputWrapper = document.getElementById('command-output-wrapper');
+
+      commandSpan2.parentElement.style.display = 'none';
+      commandOutputWrapper.style.display = 'none';
+
+      typewriteTextInElement(
+        commandSpan1Text,
+        commandSpan1,
+        () => {
+          setTimeout(() => {
+            commandOutputWrapper.style.display = 'flex';
+            commandSpan2.parentElement.style.display = 'block';
+            commandSpan2.parentElement.appendChild(blockCursor);
+
+            typewriteTextInElement(
+              commandSpan2Text,
+              commandSpan2,
+              () => {
+                blockCursor.className = 'blinking';
+              }
+            );
+          }, 125);
+        },
+        7
+      );
+    </script>
+  </body>
+</html>
