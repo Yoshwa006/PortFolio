@@ -1,75 +1,192 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>About | Yoshwa R</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <title>About | Yoshwa R</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--  This icon was created by Dhanish -->
-    <!--  Here's his X profile: https://x.com/dhanishgajjar -->
-    <link rel="icon" href="../icons/dracula.ico" type="image/x-icon">
+  <!--  This icon was created by Dhanish -->
+  <!--  Here's his X profile: https://x.com/dhanishgajjar -->
+  <link rel="icon" href="../icons/dracula.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../css/styles.css">
-  </head>
-  <body style="visibility: hidden;">
-    <p>user@yoshwa ~ % clear</p>
-    <p>user@yoshwa <span class="command">cat ./my-skills </span></p>
-    <div id="command-output-wrapper">
-      <div id="command-output">
-        <p>
-          > Data Structures,  Algorithms,  Problem Solving,  System Design,  OOPs <br><br> 
-          > Java,  Spring boot,  Mysql,  MongoDB,  Apache Kafka<br><br>
-          > HTML,  CSS,  Javascript, React JS <br><br>
-          > Linux,  Windows,  Gradle,  Maven,  Git,  Postman<br>
-          
-        </p>
+  <link rel="stylesheet" href="../css/styles.css">
+
+  <style>
+    /* Skills-specific styles - only for about.html */
+    .skills-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-category {
+      border: 1px solid #333333;
+      border-radius: 8px;
+      padding: 20px;
+      background-color: #111111;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .skills-category:hover {
+      transform: translateY(-3px);
+      border-color: #28fe14;
+      box-shadow: 0 4px 12px rgba(40, 254, 20, 0.2);
+    }
+
+    .skills-category-title {
+      color: #28fe14;
+      font-size: 16px;
+      margin-bottom: 15px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .skill-item {
+      background-color: #1a1a1a;
+      border: 1px solid #333333;
+      border-radius: 4px;
+      padding: 6px 12px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      color: #cccccc;
+    }
+
+    .skill-item:hover {
+      background-color: #28fe14;
+      color: #000000;
+      border-color: #28fe14;
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Design for skills */
+    @media (max-width: 768px) {
+      .skills-container {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+
+      .skills-category {
+        padding: 15px;
+      }
+
+      .skill-item {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+<body style="visibility: hidden;">
+<p>user@yoshwa ~ % clear</p>
+<p>user@yoshwa <span class="command">cat ./my-skills </span></p>
+<div id="command-output-wrapper">
+  <div id="command-output">
+    <div class="skills-container">
+      <div class="skills-category">
+        <h3 class="skills-category-title">Core Concepts</h3>
+        <div class="skills-list">
+          <span class="skill-item">Data Structures</span>
+          <span class="skill-item">Algorithms</span>
+          <span class="skill-item">Problem Solving</span>
+          <span class="skill-item">System Design</span>
+          <span class="skill-item">OOPs</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-category-title">Backend Technologies</h3>
+        <div class="skills-list">
+          <span class="skill-item">Java</span>
+          <span class="skill-item">Spring Boot</span>
+          <span class="skill-item">MySQL</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-item">Apache Kafka</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-category-title">Frontend Technologies</h3>
+        <div class="skills-list">
+          <span class="skill-item">HTML</span>
+          <span class="skill-item">CSS</span>
+          <span class="skill-item">JavaScript</span>
+          <span class="skill-item">React JS</span>
+        </div>
+      </div>
+
+      <div class="skills-category">
+        <h3 class="skills-category-title">Tools & Platforms</h3>
+        <div class="skills-list">
+          <span class="skill-item">Linux</span>
+          <span class="skill-item">Windows</span>
+          <span class="skill-item">Gradle</span>
+          <span class="skill-item">Maven</span>
+          <span class="skill-item">Git</span>
+          <span class="skill-item">Postman</span>
+        </div>
       </div>
     </div>
-    <a href="../index.html" class="selectable">user@yoshwa% <span class="command">clear</span></a>
-    <script type="module">
-      import { typewriteTextInElement } from '../js/utils.js';
+  </div>
+</div>
+<a href="../index.html" class="selectable">user@yoshwa% <span class="command">clear</span></a>
+<script type="module">
+  import { typewriteTextInElement } from '../js/utils.js';
 
-      const body = document.getElementsByTagName('body')[0];
+  const body = document.getElementsByTagName('body')[0];
 
-      body.style.visibility = 'visible';
+  body.style.visibility = 'visible';
 
-      const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
-      const commandSpan1Text = commandSpan1.textContent;
-      const commandSpan2Text = commandSpan2.textContent;
+  const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
+  const commandSpan1Text = commandSpan1.textContent;
+  const commandSpan2Text = commandSpan2.textContent;
 
-      commandSpan1.textContent = commandSpan1Text.substring(0, 6);
-      commandSpan2.textContent = '';
+  commandSpan1.textContent = commandSpan1Text.substring(0, 6);
+  commandSpan2.textContent = '';
 
-      const blockCursor = document.createElement('span');
+  const blockCursor = document.createElement('span');
 
-      blockCursor.id = "block-cursor";
-      blockCursor.textContent = '_';
-      commandSpan1.parentElement.appendChild(blockCursor);
+  blockCursor.id = "block-cursor";
+  blockCursor.textContent = '_';
+  commandSpan1.parentElement.appendChild(blockCursor);
 
-      const commandOutputWrapper = document.getElementById('command-output-wrapper');
+  const commandOutputWrapper = document.getElementById('command-output-wrapper');
 
-      commandSpan2.parentElement.style.display = 'none';
-      commandOutputWrapper.style.display = 'none';
+  commandSpan2.parentElement.style.display = 'none';
+  commandOutputWrapper.style.display = 'none';
 
-      typewriteTextInElement(
-        commandSpan1Text,
-        commandSpan1,
-        () => {
-          setTimeout(() => {
-            commandOutputWrapper.style.display = 'flex';
-            commandSpan2.parentElement.style.display = 'block';
-            commandSpan2.parentElement.appendChild(blockCursor);
+  typewriteTextInElement(
+          commandSpan1Text,
+          commandSpan1,
+          () => {
+            setTimeout(() => {
+              commandOutputWrapper.style.display = 'flex';
+              commandSpan2.parentElement.style.display = 'block';
+              commandSpan2.parentElement.appendChild(blockCursor);
 
-            typewriteTextInElement(
-              commandSpan2Text,
-              commandSpan2,
-              () => {
-                blockCursor.className = 'blinking';
-              }
-            );
-          }, 125);
-        },
-        7
-      );
-    </script>
-  </body>
+              typewriteTextInElement(
+                      commandSpan2Text,
+                      commandSpan2,
+                      () => {
+                        blockCursor.className = 'blinking';
+                      }
+              );
+            }, 125);
+          },
+          7
+  );
+</script>
+</body>
 </html>
