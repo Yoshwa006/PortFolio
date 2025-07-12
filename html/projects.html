@@ -19,178 +19,165 @@
         }
 
         .project-card {
-            background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
-            border: 1px solid #333333;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 30px;
-            transition: all 0.4s ease;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
             position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #28fe14, #20c20e, #28fe14);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            border-color: #28fe14;
-            box-shadow: 0 8px 25px rgba(40, 254, 20, 0.15);
+            transform: translateY(-2px);
+            border-color: #58a6ff;
+            box-shadow: 0 8px 24px rgba(88, 166, 255, 0.12);
         }
 
         .project-header {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 12px;
         }
 
         .project-title {
-            color: #28fe14;
-            font-size: 24px;
+            color: #58a6ff;
+            font-size: 20px;
             font-weight: bold;
             margin: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .project-status {
-            background: rgba(40, 254, 20, 0.1);
-            border: 1px solid rgba(40, 254, 20, 0.3);
-            border-radius: 20px;
-            padding: 5px 15px;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid rgba(88, 166, 255, 0.3);
+            border-radius: 12px;
+            padding: 4px 12px;
             font-size: 12px;
-            color: #28fe14;
+            color: #58a6ff;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        .project-status.enterprise {
+            background: rgba(255, 215, 0, 0.1);
+            border-color: rgba(255, 215, 0, 0.3);
+            color: #ffd700;
+        }
+
+        .project-status.innovative {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: rgba(255, 107, 107, 0.3);
+            color: #ff6b6b;
         }
 
         .project-description {
-            color: #cccccc;
+            color: #c9d1d9;
             line-height: 1.6;
-            margin-bottom: 25px;
-            font-size: 16px;
+            margin-bottom: 20px;
+            font-size: 15px;
         }
 
         .project-tech {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         .project-tech-title {
-            color: #28fe14;
-            font-size: 14px;
+            color: #58a6ff;
+            font-size: 13px;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .tech-stack {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
         }
 
         .tech-item {
-            background-color: #1a1a1a;
-            border: 1px solid #333333;
-            border-radius: 6px;
-            padding: 6px 12px;
-            font-size: 12px;
-            color: #cccccc;
-            transition: all 0.3s ease;
+            background-color: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 4px;
+            padding: 4px 8px;
+            font-size: 11px;
+            color: #8b949e;
+            transition: all 0.2s ease;
         }
 
         .tech-item:hover {
-            background-color: #28fe14;
-            color: #000000;
-            border-color: #28fe14;
+            background-color: #58a6ff;
+            color: #0d1117;
+            border-color: #58a6ff;
         }
 
         .project-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(40, 254, 20, 0.1);
-            border: 1px solid #28fe14;
-            border-radius: 8px;
-            color: #28fe14;
+            gap: 6px;
+            padding: 8px 16px;
+            background: rgba(88, 166, 255, 0.1);
+            border: 1px solid #58a6ff;
+            border-radius: 6px;
+            color: #58a6ff;
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 14px;
-            font-weight: bold;
+            transition: all 0.2s ease;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         .project-link:hover {
-            background: #28fe14;
-            color: #000000;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(40, 254, 20, 0.3);
-        }
-
-        .project-link-icon {
-            font-size: 16px;
+            background: #58a6ff;
+            color: #0d1117;
+            transform: translateY(-1px);
         }
 
         .projects-stats {
             text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(40, 254, 20, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(40, 254, 20, 0.1);
+            margin-top: 32px;
+            padding: 16px;
+            background: rgba(88, 166, 255, 0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(88, 166, 255, 0.1);
         }
 
         .stats-item {
             display: inline-block;
-            margin: 0 20px;
-            color: #cccccc;
+            margin: 0 16px;
+            color: #8b949e;
         }
 
         .stats-number {
-            color: #28fe14;
-            font-size: 24px;
+            color: #58a6ff;
+            font-size: 18px;
             font-weight: bold;
             display: block;
         }
 
         .stats-label {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
             .projects-container {
-                padding: 15px;
+                padding: 12px;
             }
 
             .project-card {
-                padding: 20px;
+                padding: 16px;
             }
 
             .project-header {
@@ -199,7 +186,7 @@
             }
 
             .project-title {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .project-links {
@@ -211,7 +198,7 @@
             }
 
             .stats-item {
-                margin: 10px;
+                margin: 8px;
             }
         }
     </style>
@@ -224,25 +211,99 @@
     <div id="command-output">
         <div class="projects-container">
 
+            <!-- LeetDuel Platform -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2 class="project-title">LeetDuel</h2>
+                </div>
+
+                <div class="project-description">
+                    A competitive coding platform that enhances the traditional LeetCode experience with real-time 1v1 duel functionality. Built with microservices architecture to handle concurrent coding sessions and provide seamless friend-to-friend programming challenges.
+                    <br><br>
+                    <strong>Key Features:</strong>
+                    <br>- Real-time 1v1 coding duels with friends
+                    <br>- LeetCode-inspired problem solving interface
+                    <br>- Multi-language code compilation and execution
+                    <br>- Live leaderboards and ranking system
+                    <br>- Friend system and challenge invitations
+                    <br>- Comprehensive test case validation
+                    <br>- Performance analytics and coding statistics
+                </div>
+
+                <div class="project-tech">
+                    <div class="project-tech-title">Tech Stack</div>
+                    <div class="tech-stack">
+                        <span class="tech-item">Java</span>
+                        <span class="tech-item">Spring Boot</span>
+                        <span class="tech-item">MySQL</span>
+                        <span class="tech-item">JWT Authentication</span>
+                        <span class="tech-item">Node.js</span>
+                        <span class="tech-item">Microservices</span>
+                        <span class="tech-item">Judge0 API</span>
+                        <span class="tech-item">REST APIs</span>
+                        <span class="tech-item">AWS EC2</span>
+                        <span class="tech-item">Docker</span>
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="#" class="project-link">Link will be shared soon !</a>
+
+                </div>
+            </div>
+
+            <!-- Thalir E-commerce Platform -->
+            <div class="project-card">
+                <div class="project-header">
+                    <h2 class="project-title">Thalir</h2>
+                </div>
+
+                <div class="project-description">
+                    A tamil based e-commerce platform specialized in selling high-quality Blender 3D models. Built with enterprise-grade architecture to handle high traffic and provide seamless user experience for digital asset marketplace.
+                    <br><br>
+                    <strong>Key Features:</strong>
+                    <br>- Advanced user authentication and authorization with JWT
+                    <br>- Secure payment processing and transaction management
+                    <br>- Digital asset delivery and licensing system
+                    <br>- Admin dashboard for inventory and user management
+                    <br>- High-performance search and filtering capabilities
+                    <br>- Scalable microservices architecture on AWS EC2
+                </div>
+
+                <div class="project-tech">
+                    <div class="project-tech-title">Tech Stack</div>
+                    <div class="tech-stack">
+                        <span class="tech-item">Java</span>
+                        <span class="tech-item">Spring Boot</span>
+                        <span class="tech-item">MySQL</span>
+                        <span class="tech-item">JWT Authentication</span>
+                        <span class="tech-item">AWS EC2</span>
+                        <span class="tech-item">Docker</span>
+                        <span class="tech-item">Cloud Computing</span>
+                        <span class="tech-item">REST APIs</span>
+                    </div>
+                </div>
+
+                <div class="project-links">
+                    <a href="https://github.com/Yoshwa006/thalir" class="project-link">GitHub</a>
+                </div>
+            </div>
+
             <!-- NFC-Based Rental System -->
             <div class="project-card">
                 <div class="project-header">
-                    <h2 class="project-title">
-                        <span>📱</span>
-                        NFC-Based Rental System
-                    </h2>
-                    <div class="project-status">Production Ready</div>
+                    <h2 class="project-title">NFC-Based Rental System</h2>
                 </div>
 
                 <div class="project-description">
                     Developed an innovative NFC-based rental system that revolutionizes the rental experience by eliminating manual processes. The system leverages Near Field Communication technology to provide instant access to rental details through simple NFC tag scanning.
                     <br><br>
                     <strong>Key Features:</strong>
-                    <br>• Fast and secure NFC tag scanning for rental access
-                    <br>• Real-time rental tracking and management
-                    <br>• Owner dashboard for item management and availability updates
-                    <br>• Seamless user experience with minimal friction
-                    <br>• Automated notifications and rental reminders
+                    <br>- Fast and secure NFC tag scanning for rental access
+                    <br>- Real-time rental tracking and management
+                    <br>- Owner dashboard for item management and availability updates
+                    <br>- Seamless user experience with minimal friction
+                    <br>- Automated notifications and rental reminders
                 </div>
 
                 <div class="project-tech">
@@ -258,28 +319,15 @@
                 </div>
 
                 <div class="project-links">
-                    <a href="#" class="project-link">
-                        <span class="project-link-icon">🔗</span>
-                        Live Demo
-                    </a>
-                    <a href="#" class="project-link">
-                        <span class="project-link-icon">📱</span>
-                        Mobile App
-                    </a>
-                    <a href="#" class="project-link">
-                        <span class="project-link-icon">📚</span>
-                        Documentation
-                    </a>
+                    <a href="https://github.com:Yoshwa006/Rental-using-NFC.git" class="project-link">GitHub</a>
+
                 </div>
             </div>
 
-            <!-- Add more projects here -->
+            <!-- Portfolio Website -->
             <div class="project-card">
                 <div class="project-header">
-                    <h2 class="project-title">
-                        <span>🌐</span>
-                        Portfolio Website
-                    </h2>
+                    <h2 class="project-title">Portfolio Website</h2>
                     <div class="project-status">Live</div>
                 </div>
 
@@ -287,10 +335,10 @@
                     A terminal-themed portfolio website showcasing my projects, skills, and experience. Built with a unique command-line interface aesthetic that reflects my passion for development and system administration.
                     <br><br>
                     <strong>Features:</strong>
-                    <br>• Terminal-inspired design with typewriter effects
-                    <br>• Responsive layout for all devices
-                    <br>• Interactive command-line navigation
-                    <br>• Clean, minimalist aesthetic
+                    <br>- Terminal-inspired design with typewriter effects
+                    <br>- Responsive layout for all devices
+                    <br>- Interactive command-line navigation
+                    <br>- Clean, minimalist aesthetic
                 </div>
 
                 <div class="project-tech">
@@ -304,25 +352,17 @@
                 </div>
 
                 <div class="project-links">
-                    <a href="https://github.com/yoshwa/portfolio" class="project-link">
-                        <span class="project-link-icon">💻</span>
-                        GitHub
-                    </a>
-                    <a href="#" class="project-link">
-                        <span class="project-link-icon">🔗</span>
-                        Live Site
-                    </a>
                 </div>
             </div>
 
             <!-- Project Stats -->
             <div class="projects-stats">
                 <div class="stats-item">
-                    <span class="stats-number">2+</span>
+                    <span class="stats-number">10+</span>
                     <span class="stats-label">Projects</span>
                 </div>
                 <div class="stats-item">
-                    <span class="stats-number">6+</span>
+                    <span class="stats-number">12+</span>
                     <span class="stats-label">Technologies</span>
                 </div>
                 <div class="stats-item">
