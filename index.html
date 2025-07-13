@@ -13,14 +13,19 @@
     <p>user@yoshwa ~ % <span class="command">cat ./</span></p>
 
     <div id="files-wrapper">
-      <a href="yoshwafinal.pdf" class="selectable" download="yoshwa.pdf">download-my-resume</a>
+      <a href="yoshwafinal.pdf" class="selectable" download="yoshwa.pdf" onclick="return confirmDownload()">download-my-resume</a>
       <a href="html/contact.html" class="selectable">contact-info.csv</a>
       <a href="html/skills.html" class="selectable">skills</a>
       <a href="html/about.html" class="selectable">about-me-draft</a>
       <a href="html/projects.html" class="selectable">my-projects</a>
-
-
     </div>
+
+    <script>
+      function confirmDownload() {
+        return confirm("Are you sure you want to download the resume?");
+      }
+    </script>
+
     <script type="module">
       import { typewriteTextInElement } from './js/utils.js';
 
