@@ -45,7 +45,18 @@
         </table>
       </div>
     </div>
-    <a href="../index.html" class="selectable">user@yoshwa ~ % <span class="command">clear</span></a>
+<a href="../index.html" id="clearLink" class="selectable">
+  user@yoshwa ~ % <span class="command">clear</span>
+</a>
+
+<script>
+  document.getElementById('clearLink').addEventListener('click', function (e) {
+    e.preventDefault();  // stop normal navigation
+    window.location.replace('../index.html'); // no extra stack
+  });
+</script>
+
+
     <script type="module">
       import { typewriteTextInElement } from '../js/utils.js';
 
