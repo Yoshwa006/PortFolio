@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact | Yoshwa R</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Terminal Icon -->
+    <link rel="icon" href="../icons/dracula.ico" type="image/x-icon">
+
+    <!-- Use the same global CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+  </head>
+  <style>
+  /* Center the form with improved styling */
+  .form-container {
+    max-width: 420px;
+    margin: 3rem auto;
+    padding: 1.8rem;
+    background: #1a1a1a;
+    border-radius: 8px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2e2e2e;
+  }
+
+  .form-container h2 {
+    text-align: center;
+    color: #6c63ff;
+    margin-bottom: 1.6rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-container label {
+    color: #d0d0d0;
+    font-size: 0.95rem;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #3a3a3a;
+    border-radius: 5px;
+    background: #232323;
+    color: #f0f0f0;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: all 0.25s ease;
+    box-sizing: border-box;
+  }
+
+  .form-container input:hover,
+  .form-container textarea:hover {
+    border-color: #555;
+    background: #252525;
+  }
+
+  .form-container input:focus,
+  .form-container textarea:focus {
+    border-color: #6c63ff;
+    outline: none;
+    background: #262626;
+    box-shadow: 0 0 0 2px rgba(108, 99, 255, 0.2);
+  }
+
+  .form-container textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .form-container button {
+    width: 100%;
+    padding: 0.9rem;
+    background: #6c63ff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.25s ease;
+    margin-top: 0.5rem;
+  }
+
+  .form-container button:hover {
+    background: #5b53e0;
+  }
+
+  .form-container button:active {
+    background: #4f48c5;
+    transform: translateY(1px);
+  }
+
+  /* Input placeholder styling */
+  .form-container ::placeholder {
+    color: #888;
+    opacity: 1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 500px) {
+    .form-container {
+      margin: 2rem 1rem;
+      padding: 1.4rem;
+    }
+  }
+</style>
+
+  <body style="visibility: hidden;">
+    <p>user@yoshwa ~ % clear</p>
+    <p>user@yoshwa <span class="command">cat ./send-message.csv</span></p>
+
+    <div id="command-output-wrapper">
+      <div id="command-output">
+        <div class="form-container">
+          <h2>Send Me a Message</h2>
+          <form action="https://formspree.io/f/mvgbeayl" method="POST">
+            <div class="form-group">
+              <label for="name">Your Name</label>
+              <input type="text" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            
+            <div class="form-group">
+              <label for="email">Your Email</label>
+              <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Type your message"></textarea>
+            </div>
+
+            <button type="submit">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <a href="../index.html" id="clearLink" class="selectable">
+      user@yoshwa ~ % <span class="command">clear</span>
+    </a>
+
+    <script>
+      // Clear navigation like other pages
+      document.getElementById('clearLink').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.replace('../index.html');
+      });
+    </script>
+
+    <script type="module">
+      import { typewriteTextInElement } from '../js/utils.js';
+
+      const body = document.getElementsByTagName('body')[0];
+      body.style.visibility = 'visible';
+
+      const [commandSpan1, commandSpan2] = document.getElementsByClassName('command');
+      const commandSpan1Text = commandSpan1.textContent;
+      const commandSpan2Text = commandSpan2.textContent;
+
+      // Hide the second command initially
+      commandSpan1.textContent = commandSpan1Text.substring(0, 6);
+      commandSpan2.textContent = '';
+
+      const blockCursor = document.createElement('span');
+      blockCursor.id = "block-cursor";
+      blockCursor.textContent = '_';
+      commandSpan1.parentElement.appendChild(blockCursor);
+
+      const commandOutputWrapper = document.getElementById('command-output-wrapper');
+      commandSpan2.parentElement.style.display = 'none';
+      commandOutputWrapper.style.display = 'none';
+
+      // Typewriter effect
+      typewriteTextInElement(
+        commandSpan1Text,
+        commandSpan1,
+        () => {
+          setTimeout(() => {
+            commandOutputWrapper.style.display = 'flex';
+            commandSpan2.parentElement.style.display = 'block';
+            commandSpan2.parentElement.appendChild(blockCursor);
+
+            typewriteTextInElement(
+              commandSpan2Text,
+              commandSpan2,
+              () => {
+                blockCursor.className = 'blinking';
+              }
+            );
+          }, 125);
+        },
+        7
+      );
+    </script>
+  </body>
+</html>
