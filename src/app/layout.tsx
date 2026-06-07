@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AnimatedBackground } from "@/components/animated-background";
 import { Clock } from "@/components/clock";
+import { DeviceTracker } from "@/components/device-tracker";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="bg-[#0a0a0a] text-[#ededed] font-sans antialiased relative">
+        <DeviceTracker />
         <AnimatedBackground />
         <MacTitlebar />
         <div className="flex pt-8 relative z-10">
