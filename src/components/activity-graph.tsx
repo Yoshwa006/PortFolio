@@ -43,7 +43,7 @@ export function ActivityGraph() {
         <span className="text-zinc-700">·</span>
         <span suppressHydrationWarning>{mounted ? `${data.filter((d) => d > 0).length} activities in 2026` : "— activities in 2026"}</span>
       </div>
-      <div className="overflow-x-auto pb-2 -mx-2 px-2">
+      <div className="overflow-x-auto pb-2">
         <div className="flex">
           <div className="activity-grid">
             {mounted ? (
