@@ -70,6 +70,35 @@ export function FolderIcon({ className }: { className?: string }) {
   );
 }
 
+export function ChessIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className}>
+      <rect x="3" y="2" width="18" height="20" rx="3" fill="white" opacity="0.9"/>
+      <rect x="5" y="4" width="14" height="14" rx="1" fill="#2563EB" opacity="0.2"/>
+      <text x="12" y="13" textAnchor="middle" fontSize="10" fill="#2563EB" fontWeight="bold">♚</text>
+      <rect x="7" y="19" width="10" height="3" rx="1" fill="#2563EB"/>
+    </svg>
+  );
+}
+
+export function SnakeIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className}>
+      <rect x="2" y="2" width="20" height="20" rx="4" fill="white" opacity="0.9"/>
+      <rect x="5" y="5" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="8" y="5" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="11" y="5" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="11" y="8" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="11" y="11" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="8" y="11" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="5" y="11" width="3" height="3" rx="0.5" fill="#22C55E"/>
+      <rect x="14" y="5" width="3" height="3" rx="0.5" fill="#16A34A"/>
+      <rect x="5" y="8" width="3" height="3" rx="0.5" fill="#16A34A"/>
+      <circle cx="18" cy="18" r="3" fill="#EF4444"/>
+    </svg>
+  );
+}
+
 export function WifiIcon({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 24 24" fill="none" className={className}>

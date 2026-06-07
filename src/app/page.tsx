@@ -8,6 +8,7 @@ import { ExperienceSection } from "@/components/experience-section";
 import { TechStack } from "@/components/tech-stack";
 import { ActivityGraph } from "@/components/activity-graph";
 import { AnimatedSection } from "@/components/animated-section";
+import { GamesSection } from "@/components/games-section";
 
 const stagger = {
   hidden: { opacity: 0 },
@@ -40,6 +41,9 @@ export default function Home() {
       </AnimatedSection>
       <AnimatedSection delay={0.4}>
         <TechStack />
+      </AnimatedSection>
+      <AnimatedSection delay={0.45}>
+        <GamesSection />
       </AnimatedSection>
       <AnimatedSection delay={0.5}>
         <BookingSection />

@@ -4,12 +4,14 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FinderIcon, SafariIcon, TerminalIcon, TrashIcon,
-  MusicIcon, GameIcon, WifiIcon, BatteryIcon,
+  MusicIcon, GameIcon, ChessIcon, SnakeIcon, WifiIcon, BatteryIcon,
 } from "@/components/os-icons";
 import { Terminal } from "@/components/os-terminal";
 import { Finder } from "@/components/os-finder";
+import { ChessGame } from "@/components/games/chess";
+import { SnakeGame } from "@/components/games/snake";
 
-type AppId = "finder" | "terminal" | "games" | "music";
+type AppId = "finder" | "terminal" | "games" | "music" | "chess" | "snake";
 
 export default function OsPage() {
   const [entered, setEntered] = useState(false);
@@ -105,6 +107,8 @@ export default function OsPage() {
             {id === "music" && <MusicContent />}
             {id === "terminal" && <Terminal onFocus={() => bringToFront("terminal")} />}
             {id === "finder" && <Finder onFocus={() => bringToFront("finder")} />}
+            {id === "chess" && <ChessGame />}
+            {id === "snake" && <SnakeGame />}
           </AppWindow>
         ))}
       </AnimatePresence>
@@ -207,6 +211,12 @@ function DesktopIcons({ onOpen }: { onOpen: (name: AppId) => void }) {
       <DesktopIcon label="Games" onDoubleClick={() => onOpen("games")}>
         <GameIcon className="w-8 h-8" />
       </DesktopIcon>
+      <DesktopIcon label="Chess" onDoubleClick={() => onOpen("chess")}>
+        <ChessIcon className="w-8 h-8" />
+      </DesktopIcon>
+      <DesktopIcon label="Snake" onDoubleClick={() => onOpen("snake")}>
+        <SnakeIcon className="w-8 h-8" />
+      </DesktopIcon>
       <DesktopIcon label="Music" onDoubleClick={() => onOpen("music")}>
         <MusicIcon className="w-8 h-8" />
       </DesktopIcon>
@@ -236,6 +246,8 @@ function Dock({ onOpen }: { onOpen: (name: AppId) => void }) {
     { name: "Terminal", icon: <TerminalIcon className="w-6 h-6" />, action: "terminal" as AppId },
     { name: "Music", icon: <MusicIcon className="w-6 h-6" />, action: "music" as AppId },
     { name: "Games", icon: <GameIcon className="w-6 h-6" />, action: "games" as AppId },
+    { name: "Chess", icon: <ChessIcon className="w-6 h-6" />, action: "chess" as AppId },
+    { name: "Snake", icon: <SnakeIcon className="w-6 h-6" />, action: "snake" as AppId },
     { name: "Safari", icon: <SafariIcon className="w-6 h-6" /> },
     { name: "Trash", icon: <TrashIcon className="w-6 h-6" /> },
   ];
