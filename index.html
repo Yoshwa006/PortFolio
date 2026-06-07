@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body style="visibility: hidden;">
-    <p>user@yoshwa ~ % <span class="command">cat ./</span></p>
+    <p>user@yoshwa ~ % <span class="command"></span></p>
 
     <div id="files-wrapper">
       <a href="html/contact.html" class="selectable">contact-info.csv</a>
@@ -41,10 +41,10 @@
 
       if (isShowingWelcomeContent) {
         const welcomeContentWrapper = document.createElement('div');
-        const welcomeContentWrapperText = ">ssh -p 2222 user@yoshwa";
+        const welcomeContentWrapperText = "hi im yoshwa :)";
         
         welcomeContentWrapper.id = 'welcome-content-wrapper';
-        welcomeContentWrapper.textContent = ">";
+        welcomeContentWrapper.textContent = "h";
 
         body.appendChild(welcomeContentWrapper);
 
@@ -83,16 +83,21 @@
 
         filesWrapper.style.display = 'none';
 
-        typewriteTextInElement(
-          commandSpanText, 
-          commandSpan, 
-          () => { 
-            setTimeout(() => {
-              filesWrapper.style.display = 'block';
-              blockCursor.className = "blinking"
-            }, 125);
-          }
-        );
+        if (commandSpanText) {
+          typewriteTextInElement(
+            commandSpanText, 
+            commandSpan, 
+            () => { 
+              setTimeout(() => {
+                filesWrapper.style.display = 'block';
+                blockCursor.className = "blinking"
+              }, 125);
+            }
+          );
+        } else {
+          filesWrapper.style.display = 'block';
+          blockCursor.className = "blinking";
+        }
       }
     </script>
   </body>
