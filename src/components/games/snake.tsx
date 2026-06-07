@@ -33,20 +33,43 @@ export function SnakeGame({ compact }: { compact?: boolean }) {
     setGameOver(false);
   };
 
+  const changeDir = useCallback((nd: Dir) => {
+    const opposite: Record<Dir, Dir> = { UP: "DOWN", DOWN: "UP", LEFT: "RIGHT", RIGHT: "LEFT" };
+    if (nd !== opposite[dirRef.current]) { dirRef.current = nd; setDir(nd); }
+  }, []);
+
   const handleKey = useCallback((e: KeyboardEvent) => {
     if (e.key === " " || e.key === "Enter") { e.preventDefault(); if (!running || gameOver) reset(); else setRunning(false); return; }
     const map: Record<string, Dir> = { ArrowUp: "UP", ArrowDown: "DOWN", ArrowLeft: "LEFT", ArrowRight: "RIGHT" };
     const nd = map[e.key];
     if (!nd) return;
     e.preventDefault();
-    const opposite: Record<Dir, Dir> = { UP: "DOWN", DOWN: "UP", LEFT: "RIGHT", RIGHT: "LEFT" };
-    if (nd !== opposite[dirRef.current]) { dirRef.current = nd; setDir(nd); }
-  }, [running, gameOver]);
+    changeDir(nd);
+  }, [running, gameOver, changeDir]);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
   }, [handleKey]);
+
+  const touchStart = useRef<{ x: number; y: number } | null>(null);
+
+  const handleTouchStart = useCallback((e: React.TouchEvent) => {
+    const t = e.touches[0];
+    touchStart.current = { x: t.clientX, y: t.clientY };
+  }, []);
+
+  const handleTouchEnd = useCallback((e: React.TouchEvent) => {
+    if (!touchStart.current) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStart.current.x;
+    const dy = t.clientY - touchStart.current.y;
+    touchStart.current = null;
+    const absDx = Math.abs(dx), absDy = Math.abs(dy);
+    if (Math.max(absDx, absDy) < 20) return;
+    if (absDx > absDy) changeDir(dx > 0 ? "RIGHT" : "LEFT");
+    else changeDir(dy > 0 ? "DOWN" : "UP");
+  }, [changeDir]);
 
   useEffect(() => {
     if (!running || gameOver) return;
@@ -75,7 +98,11 @@ export function SnakeGame({ compact }: { compact?: boolean }) {
   const cell = compact ? "w-3.5 h-3.5" : "w-4 h-4 sm:w-5 sm:h-5";
 
   return (
-    <div className="flex flex-col items-center gap-2 h-full overflow-y-auto p-2">
+    <div
+      className="flex flex-col items-center gap-2 h-full overflow-y-auto p-2"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="flex items-center gap-3">
         <h3 className={`font-semibold text-white/90 ${compact ? "text-xs" : "text-sm"}`}>Snake</h3>
         <span className="text-[10px] text-zinc-400">Score: {score}</span>
@@ -106,7 +133,35 @@ export function SnakeGame({ compact }: { compact?: boolean }) {
           );
         })}
       </div>
-      <p className="text-[9px] text-zinc-500">Arrow keys to move · Space to pause</p>
+      <p className="text-[9px] text-zinc-500">
+        {typeof window !== "undefined" && 'ontouchstart' in window
+          ? "Swipe or tap buttons to move"
+          : "Arrow keys to move · Space to pause"}
+      </p>
+      <div className="grid grid-cols-3 gap-1 mt-1" style={{ touchAction: "none" }}>
+        <div />
+        <button
+          onTouchStart={(e) => { e.preventDefault(); changeDir("UP"); }}
+          onMouseDown={() => changeDir("UP")}
+          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center text-white/60 text-sm"
+        >▲</button>
+        <div />
+        <button
+          onTouchStart={(e) => { e.preventDefault(); changeDir("LEFT"); }}
+          onMouseDown={() => changeDir("LEFT")}
+          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center text-white/60 text-sm"
+        >◀</button>
+        <button
+          onTouchStart={(e) => { e.preventDefault(); changeDir("DOWN"); }}
+          onMouseDown={() => changeDir("DOWN")}
+          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center text-white/60 text-sm"
+        >▼</button>
+        <button
+          onTouchStart={(e) => { e.preventDefault(); changeDir("RIGHT"); }}
+          onMouseDown={() => changeDir("RIGHT")}
+          className="w-8 h-8 bg-white/10 hover:bg-white/20 rounded-lg flex items-center justify-center text-white/60 text-sm"
+        >▶</button>
+      </div>
     </div>
   );
 }
