@@ -77,12 +77,12 @@ function Sidebar() {
           ))}
         </nav>
       </aside>
-      <nav className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden items-center justify-around bg-[#0a0a0a]/95 backdrop-blur-lg border-t border-[#27272a] py-2 px-2">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 flex md:hidden items-center justify-around bg-[#0a0a0a]/95 backdrop-blur-lg border-t border-[#27272a] py-2 px-2 safe-area-pb">
         {links.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="flex flex-col items-center gap-0.5 text-[10px] text-zinc-400 hover:text-zinc-100 transition-colors px-3 py-1"
+            className="flex flex-col items-center gap-0.5 text-xs font-medium text-zinc-400 hover:text-zinc-100 active:text-blue-400 transition-colors px-4 py-2 rounded-lg active:bg-white/5"
           >
             {link.label}
           </a>
